@@ -1,0 +1,14 @@
+﻿  ConsoleApplication1.cpp
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(119,34): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(316,34): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(613,40): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(616,37): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(627,41): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(630,38): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(641,39): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(644,36): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(804,56): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(821,65): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(1074,41): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1134,5): error MSB6006: "link.exe" salió con el código 1168.
+LINK : fatal error LNK1168: no se puede abrir D:\Cosas Santiago\InALaComEvo\x64\Debug\ConsoleApplication1.exe para escritura

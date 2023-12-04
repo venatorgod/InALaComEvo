@@ -94,15 +94,16 @@ double comienzoEjecucionT = 0, finEjecucionT = 0;
 
 int main() {
 	TAMANIO_POBLACION = 100;
-	REEMPLAZO_GENERACIONAL = 5;
+	ITERACIONES = 10000;
 	TAMANIO_TORNEOS = 5;
-	PROB_MAX = 100000;
-	PROB_CRUCE = 90000;
 	PROB_MUT_SIMPLE = 3000;
 	PROB_MUT_COMPLEJA = 10000;
 	CRUCES_MUTACION_COMPLEJA = 4;
-	ITERACIONES = 10000;
+	PROB_CRUCE = 90000;
 	LARGO_CRUCE_PMX = 6;
+	REEMPLAZO_GENERACIONAL = 5;
+	PROB_MAX = 100000;
+	NRO_THREADS = 1;
 	string opcion;
 	cout << "Desea ejecutar las 32 pruebas automaticamente o desea ejecutar algo en particular? AUTO/PART" << endl;
 	cin >> opcion;
@@ -134,8 +135,8 @@ void probar(string arch, int prueba, int corte) {
 		if (generador.getBestFitness() <= corte) break;
 	}
 	finEjecucionT = (double)clock() / (double)CLOCKS_PER_SEC;
-	if (prueba < 10) guardarPoblacionYConfiguracion(arch + "-Prueba0" + to_string(prueba));
-	else guardarPoblacionYConfiguracion(arch + "-Prueba" + to_string(prueba));
+	if (prueba < 10) guardarPoblacionYConfiguracion("PruebasVDebug/" + arch + "-Prueba0" + to_string(prueba));
+	else guardarPoblacionYConfiguracion("PruebasVDebug/" + arch + "-Prueba" + to_string(prueba));
 	string out = arch + "-Prueba";
 	if (prueba < 10) out += "0";
 	out += to_string(prueba)
@@ -170,38 +171,38 @@ void configurar() {
 	cin >> opcion;
 	if (stoi(opcion) < 1) opcion = "100";
 	ITERACIONES = stoi(opcion);
-	cout << endl << "Cual desea que sea el metodo de seleccion de padres? 0/1 (0 => Torneo, 1 => Ruleta de 2)";
+	cout << endl << "Cual desea que sea el metodo de seleccion de padres? 0/1 (0 => Torneo, 1 => Ruleta de 2) ";
 	cin >> opcion;
 	if (stoi(opcion) > 2 || stoi(opcion) < 0) opcion = "0";
 	SELECCION_PADRES = METODO_SELECCION_PADRES(stoi(opcion));
 	if (stoi(opcion) == 0) {
 		cout << endl << "Cual desea que sea el tamanio de los torneos? ";
 		cin >> opcion;
-		if (stoi(opcion) < 2 || stoi(opcion) > TAMANIO_POBLACION) opcion = to_string(TAMANIO_TORNEOS);
+		if (stoi(opcion) < 2 || stoi(opcion) > TAMANIO_POBLACION) opcion = "5";
 		TAMANIO_TORNEOS = stoi(opcion);
 	}
-	cout << endl << "Cual desea que sea la probabilidad de mutacion? (el nro unicamente, ademas debe ser entero ejemplo 20 o 1 o 95) ";
+	cout << endl << "Cual desea que sea la probabilidad de mutacion? (el nro unicamente, ademas debe ser entero ejemplo 20 o 1 o 95 y multiplicado por 1000) ";
 	cin >> opcion;
-	if (stoi(opcion) < 1 || stoi(opcion) > 100) opcion = "30";
+	if (stoi(opcion) < 1 || stoi(opcion) > PROB_MAX) opcion = "30";
 	PROB_MUT_SIMPLE = stoi(opcion);
-	cout << endl << "Cual desea que sea el operador de mutacion? 0/1 (0 => De 1 o N puntos, 1 => De insercion)";
+	cout << endl << "Cual desea que sea el operador de mutacion? 0/1 (0 => De 1 o N puntos, 1 => De insercion) ";
 	cin >> opcion;
 	if (stoi(opcion) > 2 || stoi(opcion) < 0) opcion = "0";
 	OPERADOR_MUTACION = OPERADORES_MUTACION(stoi(opcion));
 	if (stoi(opcion) == 0) {
-		cout << endl << "Cual desea que sea la probabilidad de mutacion compleja? (el nro unicamente, ademas debe ser entero ejemplo 20 o 1 o 95) ";
+		cout << endl << "Cual desea que sea la probabilidad de mutacion compleja? (el nro unicamente, ademas debe ser entero ejemplo 20 o 1 o 95 y multiplicado por 1000) ";
 		cin >> opcion;
-		if (stoi(opcion) < 1 || stoi(opcion) > 100) opcion = "30";
+		if (stoi(opcion) < 1 || stoi(opcion) > PROB_MAX) opcion = "30";
 		PROB_MUT_COMPLEJA = stoi(opcion);
 		cout << endl << "Cual desea que sea la cantidad de cruces realizados por la mutacion compleja? ";
 		cin >> opcion;
 		CRUCES_MUTACION_COMPLEJA = stoi(opcion);
 	}
-	cout << endl << "Cual desea que sea la probabilidad de cruce? (el nro unicamente, ademas debe ser entero ejemplo 20 o 1 o 95) ";
+	cout << endl << "Cual desea que sea la probabilidad de cruce? (el nro unicamente, ademas debe ser entero ejemplo 20 o 1 o 95 y multiplicado por 1000) ";
 	cin >> opcion;
-	if (stoi(opcion) < 1 || stoi(opcion) > 100) opcion = "30";
+	if (stoi(opcion) < 1 || stoi(opcion) > PROB_MAX) opcion = "30";
 	PROB_CRUCE = stoi(opcion);
-	cout << endl << "Cual desea que sea el operador de cruce? 0/1 (0 => Basado en arcos, 1 => PMX)";
+	cout << endl << "Cual desea que sea el operador de cruce? 0/1 (0 => Basado en arcos, 1 => PMX) ";
 	cin >> opcion;
 	if (stoi(opcion) > 2 || stoi(opcion) < 0) opcion = "0";
 	OPERADOR_CRUCE = OPERADORES_CRUCE(stoi(opcion));
@@ -211,7 +212,7 @@ void configurar() {
 		if (stoi(opcion) >= matriz[0].size() || stoi(opcion) < 2) opcion = to_string(matriz[0].size() - 2);
 		LARGO_CRUCE_PMX = stoi(opcion);
 	}
-	cout << endl << "Cual desea que sea el metodo de seleccion de supervivientes? 0/1 (0 => Reemplazo de N peores padres, 1 => N mejores padres quedan)";
+	cout << endl << "Cual desea que sea el metodo de seleccion de supervivientes? 0/1 (0 => Reemplazo de N peores padres, 1 => N mejores padres quedan) ";
 	cin >> opcion;
 	if (stoi(opcion) > 2 || stoi(opcion) < 0) opcion = "0";
 	SELECCION_SUPERVIVIENTES = METODO_SELECCION_SUPERVIVIENTES(stoi(opcion));
@@ -219,9 +220,13 @@ void configurar() {
 	cin >> opcion;
 	if (stoi(opcion) < 1 || stoi(opcion) > TAMANIO_POBLACION) opcion = "5";
 	REEMPLAZO_GENERACIONAL = stoi(opcion);
+	cout << endl << "Cuantos threads desea usar para el programa? ";
+	cin >> opcion;
+	NRO_THREADS = stoi(opcion);
 }
 
 void ejecutarPruebas() {
+	int nro_pruebas = 16;
 	int opcion;
 	cout << "Ingrese la cantidad de threads que desea utilizar para las pruebas..." << endl;
 	cin >> NRO_THREADS;
@@ -244,7 +249,7 @@ void ejecutarPruebas() {
 		configurar();
 	string arch = "br17";
 	HANDLE col = GetStdHandle(STD_OUTPUT_HANDLE);
-	for (int j = 0; j < 16; j++) {
+	for (int j = 0; j < nro_pruebas; j++) {
 		OPERADOR_CRUCE = OPERADORES_CRUCE(j % 2);
 		int aux = j / 2;
 		SELECCION_PADRES = METODO_SELECCION_PADRES(aux % 2);
@@ -263,7 +268,7 @@ void ejecutarPruebas() {
 		probar(arch, (j + 1), 39);
 	}
 	arch = "p43";
-	for (int j = 0; j < 16; j++) {
+	for (int j = 0; j < nro_pruebas; j++) {
 		OPERADOR_CRUCE = OPERADORES_CRUCE(j % 2);
 		int aux = j / 2;
 		SELECCION_PADRES = METODO_SELECCION_PADRES(aux % 2);
@@ -314,12 +319,11 @@ void ejecutarNormal(string archivo, int corte) {
 		generador = Generador(RANGO_CIUDADES, TAMANIO_POBLACION, true);
 	}
 	cout << "Ingrese el minimo fitness el cual se debe alcanzar para cortar" << endl;
-	corte = 0;
 	cin >> corte;
 	system("cls");
 	int lastFitness = -1, iters = 0, i = 0;
 	cout << "Comenzando ejecucion, se iran mostrando los nuevos mejores fitnesses conseguidos y la generacion en la cual se consiguieron" << endl;
-	cout << "Cada 10 iteraciones consecutivas sin progreso, se mostrara un mensaje para mostrar que sigue ejecutando el programa" << endl;
+	cout << "Cada 100 iteraciones consecutivas sin progreso, se mostrara un mensaje para mostrar que sigue ejecutando el programa" << endl;
 	comienzoEjecucionT = (double)clock() / (double)CLOCKS_PER_SEC;
 	while (i != ITERACIONES) {
 		generador.iterar();
@@ -345,6 +349,31 @@ void ejecutarNormal(string archivo, int corte) {
 			break;
 		}
 	cout << "Iters/ItersMax: " << i << "/" << ITERACIONES << endl;
+	do {
+		cout << "Desea seguir la ejecucion del algoritmo por otras N iteraciones? Y/N" << endl;
+		cin >> opcion;
+		system("cls");
+		if (opcion == "Y") {
+			i = 0;
+			while (i != ITERACIONES) {
+				generador.iterar();
+				i++;
+				if (generador.getBestFitness() != lastFitness) {
+					cout << "El Mejor Fitness de la poblacion ahora es " << generador.getBestFitness() << "| Generacion Actual: " << i << endl;
+					lastFitness = generador.getBestFitness();
+					iters = 0;
+				} else {
+					iters++;
+					if (iters >= ITERACIONES / 100) {
+						cout << "Generacion actual: " << i << endl;
+						iters = 0;
+					}
+				}
+				if (generador.getBestFitness() <= corte) break;
+			}
+		}
+	} while (opcion == "Y");
+	system("cls");
 	cout << "Desea guardar la poblacion actual y sus parametros? Y/N" << endl;
 	cin >> opcion;
 	if (opcion == "Y") guardarPoblacionYConfiguracion(archivo);
@@ -629,7 +658,7 @@ void Individuo::mutarInsercion() {
 
 // Verificado
 void Individuo::mutar(bool mutar) {
-	if (generarNroRandom(PROB_MAX, 0) >= (PROB_MAX - PROB_MUT_SIMPLE) || mutar) {
+	if (mutar || generarNroRandom(PROB_MAX, 0) >= (PROB_MAX - PROB_MUT_SIMPLE)) {
 		if (OPERADOR_MUTACION == Puntos) {
 			if (generarNroRandom(PROB_MAX, 0) > (PROB_MAX - PROB_MUT_COMPLEJA)) {
 				int x = generarNroRandom(valores.size() % CRUCES_MUTACION_COMPLEJA, 2);

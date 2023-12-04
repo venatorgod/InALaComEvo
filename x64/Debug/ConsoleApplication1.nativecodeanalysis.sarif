@@ -1,0 +1,401 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Desbordamiento aritmético: el operador \"-\" se usa en un valor de 4 bytes y, a continuación, el resultado se convierte a un valor de 8 bytes. Convierta el valor al tipo más amplio antes de llamar al operador \"-\" para evitar el desbordamiento (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+                },
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 40,
+                  "endLine": 128,
+                  "endColumn": 49
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "probar",
+                  "decoratedName": "?probar@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHHHHH@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Desbordamiento aritmético: el operador \"+\" se usa en un valor de 4 bytes y, a continuación, el resultado se convierte a un valor de 8 bytes. Convierta el valor al tipo más amplio antes de llamar al operador \"+\" para evitar el desbordamiento (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+                },
+                "region": {
+                  "startLine": 365,
+                  "startColumn": 51,
+                  "endLine": 365,
+                  "endColumn": 71
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "cargarArchivo",
+                  "decoratedName": "?cargarArchivo@@YA?AV?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Desbordamiento aritmético: el operador \"+\" se usa en un valor de 4 bytes y, a continuación, el resultado se convierte a un valor de 8 bytes. Convierta el valor al tipo más amplio antes de llamar al operador \"+\" para evitar el desbordamiento (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+                },
+                "region": {
+                  "startLine": 622,
+                  "startColumn": 24,
+                  "endLine": 622,
+                  "endColumn": 28
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Individuo::mutarInsercion",
+                  "decoratedName": "?mutarInsercion@Individuo@@AEAAXXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Desbordamiento aritmético: el operador \"+\" se usa en un valor de 4 bytes y, a continuación, el resultado se convierte a un valor de 8 bytes. Convierta el valor al tipo más amplio antes de llamar al operador \"+\" para evitar el desbordamiento (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+                },
+                "region": {
+                  "startLine": 623,
+                  "startColumn": 20,
+                  "endLine": 623,
+                  "endColumn": 24
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Individuo::mutarInsercion",
+                  "decoratedName": "?mutarInsercion@Individuo@@AEAAXXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Desbordamiento aritmético: el operador \"+\" se usa en un valor de 4 bytes y, a continuación, el resultado se convierte a un valor de 8 bytes. Convierta el valor al tipo más amplio antes de llamar al operador \"+\" para evitar el desbordamiento (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+                },
+                "region": {
+                  "startLine": 678,
+                  "startColumn": 58,
+                  "endLine": 678,
+                  "endColumn": 62
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Individuo::getAdyacencias",
+                  "decoratedName": "?getAdyacencias@Individuo@@AEAA?AV?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@AEAV1@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Desbordamiento aritmético: el operador \"+\" se usa en un valor de 4 bytes y, a continuación, el resultado se convierte a un valor de 8 bytes. Convierta el valor al tipo más amplio antes de llamar al operador \"+\" para evitar el desbordamiento (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+                },
+                "region": {
+                  "startLine": 679,
+                  "startColumn": 62,
+                  "endLine": 679,
+                  "endColumn": 66
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Individuo::getAdyacencias",
+                  "decoratedName": "?getAdyacencias@Individuo@@AEAA?AV?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@AEAV1@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Desbordamiento aritmético: el operador \"-\" se usa en un valor de 4 bytes y, a continuación, el resultado se convierte a un valor de 8 bytes. Convierta el valor al tipo más amplio antes de llamar al operador \"-\" para evitar el desbordamiento (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+                },
+                "region": {
+                  "startLine": 686,
+                  "startColumn": 58,
+                  "endLine": 686,
+                  "endColumn": 62
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Individuo::getAdyacencias",
+                  "decoratedName": "?getAdyacencias@Individuo@@AEAA?AV?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@AEAV1@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Desbordamiento aritmético: el operador \"-\" se usa en un valor de 4 bytes y, a continuación, el resultado se convierte a un valor de 8 bytes. Convierta el valor al tipo más amplio antes de llamar al operador \"-\" para evitar el desbordamiento (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+                },
+                "region": {
+                  "startLine": 687,
+                  "startColumn": 62,
+                  "endLine": 687,
+                  "endColumn": 66
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Individuo::getAdyacencias",
+                  "decoratedName": "?getAdyacencias@Individuo@@AEAA?AV?$vector@V?$vector@HV?$allocator@H@std@@@std@@V?$allocator@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@AEAV1@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Desbordamiento aritmético: el operador \"+\" se usa en un valor de 4 bytes y, a continuación, el resultado se convierte a un valor de 8 bytes. Convierta el valor al tipo más amplio antes de llamar al operador \"+\" para evitar el desbordamiento (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+                },
+                "region": {
+                  "startLine": 769,
+                  "startColumn": 28,
+                  "endLine": 769,
+                  "endColumn": 37
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Individuo::crucePMX",
+                  "decoratedName": "?crucePMX@Individuo@@AEAA?AV?$vector@VIndividuo@@V?$allocator@VIndividuo@@@std@@@std@@AEAV1@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Desbordamiento aritmético: el operador \"+\" se usa en un valor de 4 bytes y, a continuación, el resultado se convierte a un valor de 8 bytes. Convierta el valor al tipo más amplio antes de llamar al operador \"+\" para evitar el desbordamiento (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+                },
+                "region": {
+                  "startLine": 769,
+                  "startColumn": 58,
+                  "endLine": 769,
+                  "endColumn": 67
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Individuo::crucePMX",
+                  "decoratedName": "?crucePMX@Individuo@@AEAA?AV?$vector@VIndividuo@@V?$allocator@VIndividuo@@@std@@@std@@AEAV1@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Desbordamiento aritmético: el operador \"+\" se usa en un valor de 4 bytes y, a continuación, el resultado se convierte a un valor de 8 bytes. Convierta el valor al tipo más amplio antes de llamar al operador \"+\" para evitar el desbordamiento (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+                },
+                "region": {
+                  "startLine": 770,
+                  "startColumn": 17,
+                  "endLine": 770,
+                  "endColumn": 26
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Individuo::crucePMX",
+                  "decoratedName": "?crucePMX@Individuo@@AEAA?AV?$vector@VIndividuo@@V?$allocator@VIndividuo@@@std@@@std@@AEAV1@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Desbordamiento aritmético: el operador \"+\" se usa en un valor de 4 bytes y, a continuación, el resultado se convierte a un valor de 8 bytes. Convierta el valor al tipo más amplio antes de llamar al operador \"+\" para evitar el desbordamiento (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+                },
+                "region": {
+                  "startLine": 771,
+                  "startColumn": 17,
+                  "endLine": 771,
+                  "endColumn": 26
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Individuo::crucePMX",
+                  "decoratedName": "?crucePMX@Individuo@@AEAA?AV?$vector@VIndividuo@@V?$allocator@VIndividuo@@@std@@@std@@AEAV1@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Desbordamiento aritmético: el operador \"+\" se usa en un valor de 4 bytes y, a continuación, el resultado se convierte a un valor de 8 bytes. Convierta el valor al tipo más amplio antes de llamar al operador \"+\" para evitar el desbordamiento (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+                },
+                "region": {
+                  "startLine": 829,
+                  "startColumn": 52,
+                  "endLine": 829,
+                  "endColumn": 56
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "Individuo::calcularFitness",
+                  "decoratedName": "?calcularFitness@Individuo@@AEAAXXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.37.32822.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/User/Downloads/AlgEvol/ConsoleApplication1.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "4aab3084ea5ec80048f670fa4cab41ebe9fb251c31d4a4039a754fa143af1839"
+          }
+        }
+      ]
+    }
+  ]
+}
