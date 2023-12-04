@@ -135,8 +135,8 @@ void probar(string arch, int prueba, int corte) {
 		if (generador.getBestFitness() <= corte) break;
 	}
 	finEjecucionT = (double)clock() / (double)CLOCKS_PER_SEC;
-	if (prueba < 10) guardarPoblacionYConfiguracion("PruebasVDebug/" + arch + "-Prueba0" + to_string(prueba));
-	else guardarPoblacionYConfiguracion("PruebasVDebug/" + arch + "-Prueba" + to_string(prueba));
+	if (prueba < 10) guardarPoblacionYConfiguracion("PruebasVRelease/" + arch + "-Prueba0" + to_string(prueba));
+	else guardarPoblacionYConfiguracion("PruebasVRelease/" + arch + "-Prueba" + to_string(prueba));
 	string out = arch + "-Prueba";
 	if (prueba < 10) out += "0";
 	out += to_string(prueba)
