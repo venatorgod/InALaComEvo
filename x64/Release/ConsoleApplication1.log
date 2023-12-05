@@ -1,18 +1,18 @@
 ﻿  ConsoleApplication1.cpp
-D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(120,34): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(318,34): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
-D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(615,40): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
-D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(618,37): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
-D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(629,41): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
-D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(632,38): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
-D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(643,39): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
-D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(646,36): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
-D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(806,56): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
-D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(823,65): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
-D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(1076,41): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(132,34): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(358,34): warning C4267: '=': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(655,40): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(658,37): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(669,41): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(672,38): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(683,39): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(686,36): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(846,56): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(863,65): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+D:\Cosas Santiago\InALaComEvo\ConsoleApplication1.cpp(1116,41): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
   Generando código
-  31 of 1029 functions ( 3.0%) were compiled, the rest were copied from previous compilation.
+  4 of 1029 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   ConsoleApplication1.vcxproj -> D:\Cosas Santiago\InALaComEvo\x64\Release\ConsoleApplication1.exe

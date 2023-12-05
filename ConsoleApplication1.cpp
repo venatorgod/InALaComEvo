@@ -61,6 +61,7 @@ private:
 };
 
 void ejecutarPruebas();
+void ejecutarPruebasFinas();
 void ejecutarNormal(string arch = "", int corte = 0);
 static int generarNroRandom(int rango, int offset);
 vector<vector<int>> cargarArchivo(string archivo);
@@ -105,16 +106,27 @@ int main() {
 	PROB_MAX = 100000;
 	NRO_THREADS = 1;
 	string opcion;
-	cout << "Desea ejecutar las 32 pruebas automaticamente o desea ejecutar algo en particular? AUTO/PART" << endl;
+	cout << "Desea ejecutar las 32 pruebas automaticamente, las 625 pruebas finas o desea ejecutar algo en particular? (AUTO/FINO/PART)" << endl;
 	cin >> opcion;
 	if (opcion == "AUTO") ejecutarPruebas();
+	else if ("FINO") ejecutarPruebasFinas();
 	else ejecutarNormal();
 	return 0;
 }
 
 #pragma region "Implementaciones Metodos"
 #pragma region "Metodos Estaticos"
-void probar(string arch, int prueba, int corte) {
+void probar(string arch, int prueba, int corte, bool fino) {
+	if (fino) {
+		PROB_CRUCE = 90000;
+		PROB_MUT_SIMPLE = 3000;
+		PROB_MUT_COMPLEJA = 10000;
+		TAMANIO_TORNEOS = 5;
+		PROB_CRUCE = PROB_CRUCE - ((prueba - 1) % 5) * 5000;
+		PROB_MUT_SIMPLE = PROB_MUT_SIMPLE + (((prueba - 1) / 5) % 5) * 5000;
+		PROB_MUT_COMPLEJA = PROB_MUT_COMPLEJA + (((prueba - 1) / 25) % 5) * 5000;
+		TAMANIO_TORNEOS = TAMANIO_TORNEOS + (((prueba - 1) / 125) % 5);
+	}
 	if (archivoUsado != arch) {
 		matriz = cargarArchivo(arch + ".atsp");
 		RANGO_CIUDADES = matriz[0].size();
@@ -135,19 +147,28 @@ void probar(string arch, int prueba, int corte) {
 		if (generador.getBestFitness() <= corte) break;
 	}
 	finEjecucionT = (double)clock() / (double)CLOCKS_PER_SEC;
-	if (prueba < 10) guardarPoblacionYConfiguracion("PruebasVRelease/" + arch + "-Prueba0" + to_string(prueba));
-	else guardarPoblacionYConfiguracion("PruebasVRelease/" + arch + "-Prueba" + to_string(prueba));
+	if (prueba < 10) guardarPoblacionYConfiguracion(arch + "-Prueba00" + to_string(prueba));
+	else if (prueba < 100) guardarPoblacionYConfiguracion(arch + "-Prueba0" + to_string(prueba));
+	else guardarPoblacionYConfiguracion(arch + "-Prueba" + to_string(prueba));
 	string out = arch + "-Prueba";
-	if (prueba < 10) out += "0";
+	if (prueba < 10) out += "00";
+	else if (prueba < 100) out += "0";
 	out += to_string(prueba)
 		+ "||TTotal: " + to_string(finEjecucionT - comienzoEjecucionT)
 		+ "s||BestFit/Fit de corte: " + to_string(generador.getBestFitness()) + "/" + to_string(corte)
 		+ "||FitPromedio: " + to_string(generador.fitnessTotal / TAMANIO_POBLACION)
-		+ "||OPX: " + to_string(OPERADOR_CRUCE)
-		+ "||SLP: " + to_string(SELECCION_PADRES)
-		+ "||OPM: " + to_string(OPERADOR_MUTACION)
-		+ "||SLS: " + to_string(SELECCION_SUPERVIVIENTES)
 		+ "||Iters/ItersMax: " + to_string(i) + "/" + to_string(ITERACIONES);
+	if (fino) {
+		out += "||ProbCruce: " + to_string(PROB_CRUCE)
+			+ "||ProbMut: " + to_string(PROB_MUT_SIMPLE)
+			+ "||ProbMutCompleja: " + to_string(PROB_MUT_COMPLEJA)
+			+ "||Torneos: " + to_string(TAMANIO_TORNEOS);
+	} else {
+		out += "||OPX: " + to_string(OPERADOR_CRUCE)
+			+ "||SLP: " + to_string(SELECCION_PADRES)
+			+ "||OPM: " + to_string(OPERADOR_MUTACION)
+			+ "||SLS: " + to_string(SELECCION_SUPERVIVIENTES);
+	}
 	outputThreads.push_back(out);
 	system("cls");
 	for (string s : outputThreads) {
@@ -225,8 +246,27 @@ void configurar() {
 	NRO_THREADS = stoi(opcion);
 }
 
+void ejecutarPruebasFinas() {
+	string arch = "p43";
+	HANDLE col = GetStdHandle(STD_OUTPUT_HANDLE);
+	NRO_THREADS = 16;
+	OPERADOR_CRUCE = OPERADORES_CRUCE(0);
+	SELECCION_PADRES = METODO_SELECCION_PADRES(0);
+	OPERADOR_MUTACION = OPERADORES_MUTACION(0);
+	SELECCION_SUPERVIVIENTES = METODO_SELECCION_SUPERVIVIENTES(1);
+	for (int j = 0; j < 625; j++) {
+		SetConsoleTextAttribute(col, 15);
+		cout << "Comenzada prueba: " << to_string(j + 1) << " del archivo " << arch << endl;
+		probar(arch, (j + 1), 5620, true);
+	}
+	ofstream output("PruebasFinas/SalidaConsola.txt");
+	for (string s : outputThreads)
+		output << s << endl;
+	output.close();
+	SetConsoleTextAttribute(col, 15);
+}
+
 void ejecutarPruebas() {
-	int nro_pruebas = 16;
 	int opcion;
 	cout << "Ingrese la cantidad de threads que desea utilizar para las pruebas..." << endl;
 	cin >> NRO_THREADS;
@@ -249,7 +289,7 @@ void ejecutarPruebas() {
 		configurar();
 	string arch = "br17";
 	HANDLE col = GetStdHandle(STD_OUTPUT_HANDLE);
-	for (int j = 0; j < nro_pruebas; j++) {
+	for (int j = 0; j < 16; j++) {
 		OPERADOR_CRUCE = OPERADORES_CRUCE(j % 2);
 		int aux = j / 2;
 		SELECCION_PADRES = METODO_SELECCION_PADRES(aux % 2);
@@ -265,10 +305,10 @@ void ejecutarPruebas() {
 		}
 		SetConsoleTextAttribute(col, 15);
 		cout << "Comenzada prueba: " << to_string(j + 1) << " del archivo " << arch << endl;
-		probar(arch, (j + 1), 39);
+		probar(arch, (j + 1), 39, false);
 	}
 	arch = "p43";
-	for (int j = 0; j < nro_pruebas; j++) {
+	for (int j = 0; j < 16; j++) {
 		OPERADOR_CRUCE = OPERADORES_CRUCE(j % 2);
 		int aux = j / 2;
 		SELECCION_PADRES = METODO_SELECCION_PADRES(aux % 2);
@@ -284,7 +324,7 @@ void ejecutarPruebas() {
 		}
 		SetConsoleTextAttribute(col, 15);
 		cout << "Comenzada prueba: " << to_string(j + 1) << " del archivo " << arch << endl;
-		probar(arch, (j + 1), 5620);
+		probar(arch, (j + 1), 5620, false);
 	}
 	ofstream output("SalidaConsola.txt");
 	for (string s : outputThreads)
