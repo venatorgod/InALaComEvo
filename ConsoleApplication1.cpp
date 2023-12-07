@@ -161,7 +161,7 @@ void probar(string arch, int prueba, int corte, bool fino) {
 		+ "||Iters/ItersMax: " + to_string(i) + "/" + to_string(ITERACIONES);
 	if (fino) {
 		string data = to_string(finEjecucionT-comienzoEjecucionT)+", "+to_string(generador.getBestFitness())+", "+to_string(generador.fitnessTotal/TAMANIO_POBLACION)+", "+to_string(i)+", ";
-		data += to_string(PROB_CRUCE)+", "+to_string(PROB_MUT_SIMPLE)+", "+to_string(PROB_MUT_COMPLEJA)+", "+to_string(TAMANIO_TORNEOS);
+		data += to_string(PROB_CRUCE)+", "+to_string(PROB_MUT_SIMPLE)+", "+to_string(PROB_MUT_COMPLEJA)+", "+to_string(TAMANIO_TORNEOS) + ", ";
 		data += to_string(OPERADOR_CRUCE)+", "+to_string(SELECCION_PADRES)+", "+to_string(OPERADOR_MUTACION)+", "+to_string(SELECCION_SUPERVIVIENTES);
 		outputPruebasFinas.push_back(data);
 		out += "||ProbCruce: " + to_string(PROB_CRUCE)
