@@ -81,6 +81,7 @@ static Generador generador;
 static vector<vector<int>> matriz;
 static std::mutex lockThreads, lockThreadsCruce;
 static list<string> outputThreads = list<string>();
+static list<string> outputPruebasFinas = list<string>();
 static list<Individuo> outputCruza = list<Individuo>();
 static bool pruebas = false;
 static OPERADORES_CRUCE OPERADOR_CRUCE = Basado_en_Arcos;
@@ -140,7 +141,7 @@ void probar(string arch, int prueba, int corte, bool fino) {
 		generador.iterar();
 		i++;
 		iters++;
-		if (iters >= ITERACIONES / 10) {
+		if (!fino && iters >= ITERACIONES / 10) {
 			cout << "Mejor Fitness alcanzado: " << generador.getBestFitness() << "| Generacion actual: " << i << endl;
 			iters = 0;
 		}
@@ -159,6 +160,10 @@ void probar(string arch, int prueba, int corte, bool fino) {
 		+ "||FitPromedio: " + to_string(generador.fitnessTotal / TAMANIO_POBLACION)
 		+ "||Iters/ItersMax: " + to_string(i) + "/" + to_string(ITERACIONES);
 	if (fino) {
+		string data = to_string(finEjecucionT-comienzoEjecucionT)+", "+to_string(generador.getBestFitness())+", "+to_string(generador.fitnessTotal/TAMANIO_POBLACION)+", "+to_string(i)+", ";
+		data += to_string(PROB_CRUCE)+", "+to_string(PROB_MUT_SIMPLE)+", "+to_string(PROB_MUT_COMPLEJA)+", "+to_string(TAMANIO_TORNEOS);
+		data += to_string(OPERADOR_CRUCE)+", "+to_string(SELECCION_PADRES)+", "+to_string(OPERADOR_MUTACION)+", "+to_string(SELECCION_SUPERVIVIENTES);
+		outputPruebasFinas.push_back(data);
 		out += "||ProbCruce: " + to_string(PROB_CRUCE)
 			+ "||ProbMut: " + to_string(PROB_MUT_SIMPLE)
 			+ "||ProbMutCompleja: " + to_string(PROB_MUT_COMPLEJA)
@@ -170,14 +175,16 @@ void probar(string arch, int prueba, int corte, bool fino) {
 			+ "||SLS: " + to_string(SELECCION_SUPERVIVIENTES);
 	}
 	outputThreads.push_back(out);
-	system("cls");
-	for (string s : outputThreads) {
-		if (x)
-			SetConsoleTextAttribute(col, 2);
-		else
-			SetConsoleTextAttribute(col, 6);
-		cout << s << endl;
-		x = !x;
+	if (!fino) {
+		system("cls");
+		for (string s : outputThreads) {
+			if (x)
+				SetConsoleTextAttribute(col, 2);
+			else
+				SetConsoleTextAttribute(col, 6);
+			cout << s << endl;
+			x = !x;
+		}
 	}
 }
 
@@ -256,7 +263,8 @@ void ejecutarPruebasFinas() {
 	SELECCION_SUPERVIVIENTES = METODO_SELECCION_SUPERVIVIENTES(1);
 	for (int j = 0; j < 625; j++) {
 		SetConsoleTextAttribute(col, 15);
-		cout << "Comenzada prueba: " << to_string(j + 1) << " del archivo " << arch << endl;
+		system("cls");
+		cout << "Prueba: " << to_string(j + 1) << endl;
 		probar(arch, (j + 1), 5620, true);
 	}
 	ofstream output("PruebasFinas/SalidaConsola.txt");
@@ -264,6 +272,10 @@ void ejecutarPruebasFinas() {
 		output << s << endl;
 	output.close();
 	SetConsoleTextAttribute(col, 15);
+	ofstream outPt("PruebasFinas/DatosEjecucion.txt");
+	for (string s : outputPruebasFinas)
+		outPt << s << endl;
+	outPt.close();
 }
 
 void ejecutarPruebas() {
