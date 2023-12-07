@@ -169,6 +169,15 @@ void probar(string arch, int prueba, int corte, bool fino) {
 			+ "||ProbMutCompleja: " + to_string(PROB_MUT_COMPLEJA)
 			+ "||Torneos: " + to_string(TAMANIO_TORNEOS);
 	} else {
+		string data = to_string(SELECCION_PADRES)+ ", " 
+			+ to_string(OPERADOR_MUTACION)+ ", " 
+			+ to_string(SELECCION_SUPERVIVIENTES)+ ", "
+			+ to_string(OPERADOR_CRUCE) + ", "
+			+ to_string(finEjecucionT - comienzoEjecucionT) + ", " 
+			+ to_string(generador.getBestFitness()) + ", " 
+			+ to_string(generador.fitnessTotal / TAMANIO_POBLACION) + ", " 
+			+ to_string(i);
+		outputPruebasFinas.push_back(data);
 		out += "||OPX: " + to_string(OPERADOR_CRUCE)
 			+ "||SLP: " + to_string(SELECCION_PADRES)
 			+ "||OPM: " + to_string(OPERADOR_MUTACION)
@@ -267,12 +276,12 @@ void ejecutarPruebasFinas() {
 		cout << "Prueba: " << to_string(j + 1) << endl;
 		probar(arch, (j + 1), 5620, true);
 	}
-	ofstream output("PruebasFinas/SalidaConsola.txt");
+	ofstream output("SalidaConsola.txt");
 	for (string s : outputThreads)
 		output << s << endl;
 	output.close();
 	SetConsoleTextAttribute(col, 15);
-	ofstream outPt("PruebasFinas/DatosEjecucion.txt");
+	ofstream outPt("DatosEjecucion.txt");
 	for (string s : outputPruebasFinas)
 		outPt << s << endl;
 	outPt.close();
@@ -342,6 +351,10 @@ void ejecutarPruebas() {
 	for (string s : outputThreads)
 		output << s << endl;
 	output.close();
+	ofstream outPt("DatosEjecucion.txt");
+	for (string s : outputPruebasFinas)
+		outPt << s << endl;
+	outPt.close();
 	SetConsoleTextAttribute(col, 15);
 }
 
